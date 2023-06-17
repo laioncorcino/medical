@@ -1,0 +1,34 @@
+package com.corcino.medical.entity;
+
+import com.corcino.medical.json.AddressRequest;
+import com.corcino.medical.json.DoctorRequest;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+public class Doctor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long doctorId;
+    private String name;
+    private String email;
+    private String crm;
+
+    @Enumerated(value = EnumType.STRING)
+    private Expertise expertise;
+
+    @Embedded
+    private Address address;
+
+    public Doctor(DoctorRequest doctorRequest, AddressRequest addressRequest) {
+        this.name = doctorRequest.getName();
+        this.email = doctorRequest.getEmail();
+        this.crm = doctorRequest.getCrm();
+        this.expertise = Expertise.valueOf(doctorRequest.getExpertise());
+        this.address = new Address(addressRequest);
+    }
+}
