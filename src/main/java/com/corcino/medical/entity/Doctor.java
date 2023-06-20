@@ -17,6 +17,7 @@ public class Doctor {
     private String name;
     private String email;
     private String crm;
+    private String phone;
 
     @Enumerated(value = EnumType.STRING)
     private Expertise expertise;
@@ -28,6 +29,7 @@ public class Doctor {
         this.name = doctorRequest.getName();
         this.email = doctorRequest.getEmail();
         this.crm = doctorRequest.getCrm();
+        this.phone = doctorRequest.getPhone();
         this.expertise = Expertise.valueOf(doctorRequest.getExpertise());
         this.address = new Address(addressRequest);
     }

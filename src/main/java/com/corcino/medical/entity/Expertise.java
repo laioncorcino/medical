@@ -7,6 +7,6 @@ public enum Expertise {
     GASTROENTEROLOGIA,
     GINECOLOGIA,
     ORTOPEDIA,
-    UROLOGIA;
+    UROLOGIA
 
 }
