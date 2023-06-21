@@ -1,1 +1,1 @@
-ALTER TABLE doctor ADD phone VARCHAR(20) NOT NULL af ;
+ALTER TABLE doctor ADD phone VARCHAR(20) NOT NULL;
