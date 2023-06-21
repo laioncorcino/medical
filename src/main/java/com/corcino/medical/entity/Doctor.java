@@ -1,6 +1,5 @@
 package com.corcino.medical.entity;
 
-import com.corcino.medical.json.AddressRequest;
 import com.corcino.medical.json.DoctorRequest;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -25,12 +24,12 @@ public class Doctor {
     @Embedded
     private Address address;
 
-    public Doctor(DoctorRequest doctorRequest, AddressRequest addressRequest) {
+    public Doctor(DoctorRequest doctorRequest) {
         this.name = doctorRequest.getName();
         this.email = doctorRequest.getEmail();
         this.crm = doctorRequest.getCrm();
         this.phone = doctorRequest.getPhone();
         this.expertise = Expertise.valueOf(doctorRequest.getExpertise());
-        this.address = new Address(addressRequest);
+        this.address = new Address(doctorRequest.getAddress());
     }
 }
