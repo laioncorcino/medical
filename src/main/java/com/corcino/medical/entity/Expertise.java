@@ -7,6 +7,17 @@ public enum Expertise {
     GASTROENTEROLOGIA,
     GINECOLOGIA,
     ORTOPEDIA,
-    UROLOGIA
+    NEUROLOGIA,
+    UROLOGIA,
+    PSICOLOGIA;
+
+    public static Expertise confirmExpertise(String expertiseName) {
+        for (Expertise expertise : Expertise.values()) {
+            if (expertiseName.equals(expertise.toString())) {
+                return Expertise.valueOf(expertiseName);
+            }
+        }
+        throw new IllegalArgumentException(String.format("Invalid expertise: %s", expertiseName));
+    }
 
 }

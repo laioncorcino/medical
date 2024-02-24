@@ -29,7 +29,7 @@ public class Doctor {
         this.email = doctorRequest.getEmail();
         this.crm = doctorRequest.getCrm();
         this.phone = doctorRequest.getPhone();
-        this.expertise = Expertise.valueOf(doctorRequest.getExpertise());
+        this.expertise = Expertise.confirmExpertise(doctorRequest.getExpertise());
         this.address = new Address(doctorRequest.getAddress());
     }
 }
