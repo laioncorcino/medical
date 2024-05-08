@@ -12,9 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
 
 import static org.springframework.data.domain.Sort.Direction.ASC;
 
@@ -30,10 +27,9 @@ public class DoctorController {
     }
 
     @PostMapping()
-    public ResponseEntity<String> create(@RequestBody @Valid DoctorRequest doctorRequest, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DoctorResponse> create(@RequestBody @Valid DoctorRequest doctorRequest) {
         Doctor doctor = doctorService.createDoctor(doctorRequest);
-        URI uri = uriBuilder.path("/api/v1/doctors/{doctorId}").buildAndExpand(doctor.getDoctorId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.ok(new DoctorResponse(doctor));
     }
 
     @GetMapping
@@ -44,6 +40,11 @@ public class DoctorController {
     @GetMapping("/{doctorId}")
     public ResponseEntity<DoctorResponse> getById(@PathVariable Long doctorId) {
         return ResponseEntity.ok(doctorService.getDoctorById(doctorId));
+    }
+
+    @PutMapping("/{doctorId}")
+    public ResponseEntity<DoctorResponse> update(@RequestBody DoctorRequest doctorRequest, @PathVariable Long doctorId) {
+        return ResponseEntity.ok(doctorService.updateDoctor(doctorRequest, doctorId));
     }
 
     @DeleteMapping("/{doctorId}")

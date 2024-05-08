@@ -9,6 +9,7 @@ public enum Expertise {
     ORTOPEDIA,
     NEUROLOGIA,
     UROLOGIA,
+    PEDIATRIA,
     PSICOLOGIA;
 
     public static Expertise confirmExpertise(String expertiseName) {
