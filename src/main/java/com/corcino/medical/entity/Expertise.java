@@ -1,5 +1,7 @@
 package com.corcino.medical.entity;
 
+import com.corcino.medical.error.exception.BadRequestException;
+
 public enum Expertise {
 
     CARDIOLOGIA,
@@ -18,7 +20,7 @@ public enum Expertise {
                 return Expertise.valueOf(expertiseName);
             }
         }
-        throw new IllegalArgumentException(String.format("Invalid expertise: %s", expertiseName));
+        throw new BadRequestException(String.format("Invalid expertise: %s", expertiseName));
     }
 
 }
