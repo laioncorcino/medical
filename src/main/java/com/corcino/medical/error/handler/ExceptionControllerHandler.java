@@ -38,7 +38,7 @@ public class ExceptionControllerHandler {
     }
 
     @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<StandardError> handleBadRequest(BadRequestException badRequestException) {
+    public ResponseEntity<?> handleBadRequest(BadRequestException badRequestException) {
 
         StandardError error = StandardError.builder()
                 .title("Bad Request Exception.")
